@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        battery;
+        memory1;
+        memory2;
+        memory3;
+
+        constructor(battery, memory1, memory2, memory3) {
+            this.battery = battery;
+            this.memory1 = memory1;
+            this.memory2 = memory2;
+            this.memory3 = memory3;
+        }
+
+        getShowAll() {
+            document.write('pin: ' + this.battery + '<br>');
+            document.write('soan tn: ' + this.memory2 + '<br>');
+            document.write('gui tn: ' + this.memory1 + '<br>');
+            document.write('tn den: ' + this.memory3 + '<br>');
+        }
+
+        // setBattery(battery) {
+        //     this.battery = battery;
+        // }
+        //
+        // setMemory1([]) {
+        //     this.memory1 = [];
+        // }
+        // setMemory3([]) {
+        //     this.memory3 = [];
+        // }
+        setSendMessage(mobile, message, mobi) {
+            mobi.memory3.push(message);
+            mobile.battery -= 5;
+            mobile.memory1.push(message);
+        }
+
+        setTypingMessage(mobile, type) {
+            mobile.memory2.push(type);
+            mobile.battery -= 1;
+        }
+
+        getCharge() {
+            while (this.battery < 100) {
+                this.battery++;
+            }
+        }
+
+    }
+
+    let iphone = new Mobile(100, [], [], []);
+    let samsung = new Mobile(100, [], [], []);
+
+    iphone.setTypingMessage(iphone, 'he...');
+    iphone.setSendMessage(iphone, 'hello', samsung);
+    //mobile1.getShowAll();
+    samsung.setTypingMessage(samsung, 'what...');
+    samsung.setSendMessage(samsung, 'whats up?', iphone);
+
+
+    document.write('iphone: ');
+    iphone.getShowAll();
+    document.write('<br>');
+    document.write('mobile2: ');
+    samsung.getShowAll();
+    iphone.getCharge();
+    document.write('<br>');
+    document.write('iphone: ');
+    iphone.getShowAll();
+</script>
+</body>
+</html>
